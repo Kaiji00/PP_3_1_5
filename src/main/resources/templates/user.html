@@ -5,7 +5,18 @@
 </head>
 <body>
 <h1>User, welcome spring boot security page!</h1>
-
-
+<table class="User">
+    <tbody>
+    <tr>
+        <td th:text="${user.getId()}"/>
+        <td th:text="${user.getUserName()}"/>
+        <td th:text="${user.getPassword()}"/>
+        <td th:each="role : ${user.getRoles()}" th:text="${role.getName()}"></td>
+    </tr>
+    </tbody>
+</table>
+<form th:action="@{/logout}" th:method="POST">
+    <input type="submit" value="logout"/>
+</form>
 </body>
 </html>

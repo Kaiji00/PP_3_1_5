@@ -12,30 +12,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-//@Component
-//public class init {
-//
-//    private final UserService userService;
-//    private final RoleService roleService;
-//
-//    @Autowired
-//    public init(UserService userService, RoleService roleService) {
-//        this.userService = userService;
-//        this.roleService = roleService;
-//    }
-//
-//    @PostConstruct
-//    public void startDB() {
-//        Role roleAdmin = new Role("ROLE_ADMIN");
-//        Role roleUser = new Role("ROLE_USER");
-//        roleService.addRole(roleAdmin);
-//        roleService.addRole(roleUser);
-//        List<Role> roleSet = new ArrayList<>();
-//        roleSet.add(roleAdmin);
-//        roleSet.add(roleUser);
-//        User admin = new User("admin2", "admin@gmail.com",
-//                "$2a$12$29mL7hCrkQ01SgK.yEQ5ceeNLp0gUwamoNCX90Dm6pNLt/zQXuxbq", roleSet);
-//            userService.saveUser(admin);
-//
-//    }
-//}
+@Component
+public class init {
+
+    private final UserService userService;
+    private final RoleService roleService;
+
+    @Autowired
+    public init(UserService userService, RoleService roleService) {
+        this.userService = userService;
+        this.roleService = roleService;
+    }
+
+    @PostConstruct
+    public void startDB() {
+        Role roleAdmin = new Role("ROLE_ADMIN");
+        Role roleUser = new Role("ROLE_USER");
+        roleService.addRole(roleAdmin);
+        roleService.addRole(roleUser);
+        List<Role> roleSet = new ArrayList<>();
+        roleSet.add(roleAdmin);
+        roleSet.add(roleUser);
+        User admin = new User("admin2", "admin@gmail.com",
+                "$2a$12$29mL7hCrkQ01SgK.yEQ5ceeNLp0gUwamoNCX90Dm6pNLt/zQXuxbq", roleSet);
+        userService.saveUser(admin);
+    }
+}

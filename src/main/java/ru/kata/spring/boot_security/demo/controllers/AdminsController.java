@@ -20,6 +20,7 @@ public class AdminsController {
     private final PasswordEncoder passwordEncoder;
     private final RoleService roleService;
     private final UserService userService;
+
     @Autowired
     public AdminsController(PasswordEncoder passwordEncoder, RoleService roleService, UserService userService) {
         this.passwordEncoder = passwordEncoder;
@@ -34,7 +35,7 @@ public class AdminsController {
     }
 
     @GetMapping("/{id}")
-    public String getUserById(@PathVariable("id") long id, Model model) {
+    public String getUserById(@PathVariable("id") Long id, Model model) {
         model.addAttribute("user", userService.getUserById(id));
         return "user_for_admin";
     }

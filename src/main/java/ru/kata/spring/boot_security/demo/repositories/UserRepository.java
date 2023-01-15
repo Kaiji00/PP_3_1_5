@@ -11,15 +11,17 @@ import java.util.List;
 
 public interface UserRepository {
 
-     public List<User> getAllUsers();
-     User findByUserName(String username);
-     void updateUser(User user);
+    public List<User> getAllUsers();
 
-     void deleteUserById(Long id);
+    User findByUserName(String username);
 
-     void saveUser(User user);
+    void updateUser(User user);
 
-     User getUserById(Long id);
+    void deleteUserById(Long id);
+
+    void saveUser(User user);
+
+    User getUserById(Long id);
 
 
 }

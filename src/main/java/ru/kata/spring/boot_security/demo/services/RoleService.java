@@ -18,13 +18,16 @@ public class RoleService {
     public Role getRoleById(Long id) {
         return roleRepository.getRoleById(id);
     }
+
     public Role getRoleByName(String name) {
         return roleRepository.getRoleByName(name);
     }
+
     @Transactional
     public List<Role> getAllRoles() {
         return roleRepository.getAllRoles();
     }
+
     @Transactional
     public void addRole(Role role) {
         roleRepository.addRole(role);

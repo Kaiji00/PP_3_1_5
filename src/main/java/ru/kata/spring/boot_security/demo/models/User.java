@@ -1,13 +1,9 @@
 package ru.kata.spring.boot_security.demo.models;
 
-
-import org.hibernate.annotations.Cascade;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Size;
 import java.util.*;
 
 
@@ -20,21 +16,18 @@ public class User implements UserDetails {
     private Long id;
 
     @Column(name = "name")
-    @Size(min = 2)
     private String userName;
     @Column(name = "Email")
-    @Email
     private String email;
     @Column(name = "password")
-    @Size(min = 3)
     private String password;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @JoinTable(name = "users_roles",
-                joinColumns = @JoinColumn(name = "user_id"),
-                inverseJoinColumns = @JoinColumn(name = "role_id"))
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<Role> roles;
+
     public User() {
     }
 

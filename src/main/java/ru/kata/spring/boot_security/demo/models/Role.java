@@ -1,8 +1,7 @@
 package ru.kata.spring.boot_security.demo.models;
 
-import org.hibernate.annotations.Cascade;
+
 import org.springframework.security.core.GrantedAuthority;
-import org.thymeleaf.util.StringUtils;
 
 
 import javax.persistence.*;
@@ -19,7 +18,6 @@ public class Role implements GrantedAuthority {
     private String name;
 
     @ManyToMany(mappedBy = "roles")
-    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<User> users;
 
     public Role() {

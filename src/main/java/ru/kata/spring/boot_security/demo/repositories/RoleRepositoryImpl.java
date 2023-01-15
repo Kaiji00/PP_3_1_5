@@ -5,6 +5,7 @@ import ru.kata.spring.boot_security.demo.models.Role;
 
 import javax.persistence.EntityManager;
 import java.util.List;
+
 @Repository
 public class RoleRepositoryImpl implements RoleRepository {
 

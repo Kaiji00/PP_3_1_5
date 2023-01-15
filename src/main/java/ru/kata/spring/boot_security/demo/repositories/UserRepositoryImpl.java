@@ -6,6 +6,7 @@ import ru.kata.spring.boot_security.demo.models.User;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
+
 @Repository
 public class UserRepositoryImpl implements UserRepository {
 
@@ -37,7 +38,8 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public void deleteUserById(Long id) {
-        entityManager.remove(getUserById(id));
+        entityManager.createQuery(
+                "DELETE User WHERE id = :id").setParameter("id", id).executeUpdate();
     }
 
     @Override

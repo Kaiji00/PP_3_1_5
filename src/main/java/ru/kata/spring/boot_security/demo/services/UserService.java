@@ -13,7 +13,6 @@ import java.util.List;
 
 
 @Service
-@Transactional
 public class UserService implements UserDetailsService {
 
 

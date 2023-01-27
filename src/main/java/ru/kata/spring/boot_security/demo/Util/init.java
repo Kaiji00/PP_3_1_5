@@ -31,10 +31,15 @@ public class init {
         roleService.addRole(roleAdmin);
         roleService.addRole(roleUser);
         List<Role> roleSet = new ArrayList<>();
+        List<Role> userRoleSet = new ArrayList<>();
+        userRoleSet.add(roleUser);
         roleSet.add(roleAdmin);
         roleSet.add(roleUser);
         User admin = new User("admin2", "admin", "admin@gmail.com", 22,
                 "$2a$12$29mL7hCrkQ01SgK.yEQ5ceeNLp0gUwamoNCX90Dm6pNLt/zQXuxbq", roleSet);
+        User user = new User("Stas", "Gorbachev", "cvbn123ujhkj@mail.ru", 22,
+                "$2a$12$29mL7hCrkQ01SgK.yEQ5ceeNLp0gUwamoNCX90Dm6pNLt/zQXuxbq", userRoleSet);
         userService.saveUser(admin);
+        userService.saveUser(user);
     }
 }

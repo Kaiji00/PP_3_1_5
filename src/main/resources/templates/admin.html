@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -54,7 +54,7 @@
                             <a class="nav-link active" data-toggle="tab" id="allUsersTable" href="#allUsers">Users table</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#newUser">New User</a>
+                            <a  class="nav-link" data-toggle="tab" href="#newUser">New User</a>
                         </li>
                     </ul>
                     <div class="tab-content">
@@ -304,47 +304,12 @@
         integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
         crossorigin="anonymous"></script>
 
-<!--<script type="text/javascript" src="static/AddUser.js"></script>-->
-<script type="text/javascript" src="static/AllUsers.js"></script>
-<script type="text/javascript" src="static/DeleteModal.js"></script>
-<script type="text/javascript" src="static/DeleteUser.js"></script>
-<script type="text/javascript" src="static/EditModal.js"></script>
-<script type="text/javascript" src="static/EditUser.js"></script>
-<script type="text/javascript" src="static/UserPage.js"></script>
-<scrypt>
-    $(async function() {
-    await allUsers();
-    });
-    const table = $('#tbodyAllUserTable');
-    async function allUsers() {
-    table.empty()
-    fetch("http://localhost:8080/api/admin")
-    .then(res => res.json())
-    .then(data => {
-    data.forEach(user => {
-    let tableWithUsers = `$(
-    <tr>
-        <td>${user.id}</td>
-        <td>${user.userName}</td>
-        <td>${user.lastName}</td>
-        <td>${user.email}</td>
-        <td>${user.age}</td>
-        <td>${user.password}</td>
-        <td>${user.roles.map(role => " " + role.name.substring(5))}</td>
-        <td>
-            <button type="button" class="btn btn-info" data-toggle="modal" id="buttonEdit"
-                    data-action="edit" data-id="${user.id}" data-target="#edit">Edit</button>
-        </td>
-        <td>
-            <button type="button" class="btn btn-danger" data-toggle="modal" id="buttonDelete"
-                    data-action="delete" data-id="${user.id}" data-target="#delete">Delete</button>
-        </td>
-    </tr>)`;
-    table.append(tableWithUsers);
-    })
-    })
-    }
-</scrypt>
-
+<script type="text/javascript" src="/AddUser.js"></script>
+<script type="text/javascript" src="/AllUsers.js"></script>
+<script type="text/javascript" src="/DeleteModal.js"></script>
+<script type="text/javascript" src="/DeleteUser.js"></script>
+<script type="text/javascript" src="/EditModal.js"></script>
+<script type="text/javascript" src="/EditUser.js"></script>
+<script type="text/javascript" src="/UserPage.js"></script>
 </body>
 </html>

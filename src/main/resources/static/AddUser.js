@@ -26,7 +26,7 @@ async function newUser() {
                 name : form.roles.options[i].name
             })
         }
-        fetch("http://localhost:8080/api/users", {
+        fetch("http://localhost:8080/api/admin", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

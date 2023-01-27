@@ -30,6 +30,13 @@ public class UserRepositoryImpl implements UserRepository {
                 .setParameter("username", username)
                 .getSingleResult();
     }
+    @Override
+    public User findUserByEmail(String email) {
+        return entityManager.createQuery("select u from User u join fetch u.roles where " +
+                        "u.email = :email", User.class)
+                .setParameter("email", email)
+                .getSingleResult();
+    }
 
     @Override
     public void updateUser(User user) {

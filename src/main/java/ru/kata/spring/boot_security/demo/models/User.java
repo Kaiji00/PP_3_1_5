@@ -19,6 +19,10 @@ public class User implements UserDetails {
     private String userName;
     @Column(name = "Email")
     private String email;
+    @Column(name = "Last_name")
+    private String lastName;
+    @Column(name = "age")
+    private int age;
     @Column(name = "password")
     private String password;
 
@@ -31,9 +35,29 @@ public class User implements UserDetails {
     public User() {
     }
 
-    public User(String userName, String email, String password, List<Role> roles) {
+//    public User(String userName, String email, String password, List<Role> roles) {
+//        this.userName = userName;
+//        this.email = email;
+//        this.password = password;
+//        this.roles = roles;
+//    }
+
+
+    public User(String userName, String lastName, String email, int age, String password, List<Role> roles) {
         this.userName = userName;
         this.email = email;
+        this.lastName = lastName;
+        this.age = age;
+        this.password = password;
+        this.roles = roles;
+    }
+
+    public User(Long id, String userName, String email, String lastName, int age, String password, List<Role> roles) {
+        this.id = id;
+        this.userName = userName;
+        this.email = email;
+        this.lastName = lastName;
+        this.age = age;
         this.password = password;
         this.roles = roles;
     }
@@ -109,6 +133,22 @@ public class User implements UserDetails {
         this.email = email;
     }
 
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -130,5 +170,15 @@ public class User implements UserDetails {
                 ", password='" + password + '\'' +
                 ", roles=" + roles +
                 '}';
+    }
+    public String getShortRoles() {
+        if (roles.toString().equals("[ROLE_USER]")) {
+            return "USER";
+        } else if (roles.toString().equals("[ROLE_ADMIN]")) {
+            return "ADMIN";
+        } else if (roles.equals(null)) {
+            return null;
+        }
+        return "ADMIN USER";
     }
 }

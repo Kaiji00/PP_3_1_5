@@ -33,7 +33,7 @@ public class init {
         List<Role> roleSet = new ArrayList<>();
         roleSet.add(roleAdmin);
         roleSet.add(roleUser);
-        User admin = new User("admin2", "admin@gmail.com",
+        User admin = new User("admin2", "admin", "admin@gmail.com", 22,
                 "$2a$12$29mL7hCrkQ01SgK.yEQ5ceeNLp0gUwamoNCX90Dm6pNLt/zQXuxbq", roleSet);
         userService.saveUser(admin);
     }

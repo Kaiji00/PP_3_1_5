@@ -23,7 +23,7 @@ async function showDeleteModal(id) {
             roles.forEach(role => {
                 let selectedRole = false;
                 for (let i = 0; i < user.roles.length; i++) {
-                    if (user.roles[i].name === role.role) {
+                    if (user.roles[i].name === role.name) {
                         selectedRole = true;
                         break;
                     }
@@ -36,8 +36,9 @@ async function showDeleteModal(id) {
             })
         });
 }
+
 async function getUser(id) {
-    let url = "http://localhost:8080/api/admin/" + id;
+    let url = "http://localhost:8080/api/users/" + id;
     let response = await fetch(url);
     return await response.json();
 }

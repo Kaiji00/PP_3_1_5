@@ -1,6 +1,7 @@
-$(async function() {
+$(async function () {
     editUser();
 });
+
 function editUser() {
     const editForm = document.forms["formEditUser"];
     editForm.addEventListener("submit", ev => {
@@ -8,12 +9,12 @@ function editUser() {
         let editUserRoles = [];
         for (let i = 0; i < editForm.roles.options.length; i++) {
             if (editForm.roles.options[i].selected) editUserRoles.push({
-                id : editForm.roles.options[i].value,
-                name : "ROLE_" + editForm.roles.options[i].text
+                id: editForm.roles.options[i].value,
+                name: "ROLE_" + editForm.roles.options[i].text
             })
         }
 
-        fetch("http://localhost:8080/api/admin/" + editForm.id.value, {
+        fetch("http://localhost:8080/api/users/" + editForm.id.value, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

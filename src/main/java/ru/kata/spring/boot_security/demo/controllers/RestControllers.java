@@ -1,8 +1,10 @@
 package ru.kata.spring.boot_security.demo.controllers;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import ru.kata.spring.boot_security.demo.models.User;
@@ -10,6 +12,8 @@ import ru.kata.spring.boot_security.demo.models.Role;
 import ru.kata.spring.boot_security.demo.services.RoleService;
 import ru.kata.spring.boot_security.demo.services.UserService;
 
+import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -28,7 +32,7 @@ public class RestControllers {
     }
 
 
-    @GetMapping("/admin")
+    @GetMapping("/users")
     public ResponseEntity<List<User>> showAllUsers() {
         List<User> users = userService.getAllUsers();
         return users != null && !users.isEmpty()
@@ -36,7 +40,7 @@ public class RestControllers {
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping("/admin/{id}")
+    @GetMapping("/users/{id}")
     public ResponseEntity<User> showUser(@PathVariable Long id) {
         User user = userService.getUserById(id);
         return user != null
@@ -44,29 +48,31 @@ public class RestControllers {
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @PostMapping("/admin")
+    @PostMapping("/users")
     public ResponseEntity<User> addNewUser(@RequestBody User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userService.saveUser(user);
         return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
 
-    @PutMapping("/admin/{id}")
+    @PutMapping("/users/{id}")
     public ResponseEntity<User> updateUser(@RequestBody User user) {
         userService.updateUser(user);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @DeleteMapping("/admin/{id}")
+    @DeleteMapping("/users/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable("id") Long id) {
         userService.deleteUserById(id);
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/viewUser")
-    public ResponseEntity<User> showUser(Authentication authentication) {
-        return new ResponseEntity<>((User) authentication.getPrincipal(), HttpStatus.OK);
+
+    @GetMapping(value = "/viewUser")
+    public ResponseEntity<User> showUser(Principal principal) {
+        return new ResponseEntity<>(userService.findUserByName(principal.getName()), HttpStatus.OK);
     }
+
 
     @GetMapping("/roles")
     public ResponseEntity<List<Role>> getAllRoles() {
@@ -74,7 +80,7 @@ public class RestControllers {
     }
 
     @GetMapping("/roles/{id}")
-    ResponseEntity<Role> getRoleById(@PathVariable("id") long id){
+    ResponseEntity<Role> getRoleById(@PathVariable("id") Long id) {
         return new ResponseEntity<>(roleService.getRoleById(id), HttpStatus.OK);
     }
 }

@@ -1,6 +1,7 @@
-$(async function() {
+$(async function () {
     await newUser();
 });
+
 async function newUser() {
     await fetch("http://localhost:8080/api/roles")
         .then(res => res.json())
@@ -22,11 +23,11 @@ async function newUser() {
         let newUserRoles = [];
         for (let i = 0; i < form.roles.options.length; i++) {
             if (form.roles.options[i].selected) newUserRoles.push({
-                id : form.roles.options[i].value,
-                name : form.roles.options[i].name
+                id: form.roles.options[i].value,
+                name: form.roles.options[i].name
             })
         }
-        fetch("http://localhost:8080/api/admin", {
+        fetch("http://localhost:8080/api/users", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

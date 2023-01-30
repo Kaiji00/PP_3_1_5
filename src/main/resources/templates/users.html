@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
           integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="shortcut icon" href="http://s1.iconbird.com/ico/1012/SimplifiedApp/w513h5131350915209appicnsCoda.png"
+          type="image/x-icon">
     <title>Admin panel</title>
 </head>
 <body>
@@ -51,10 +53,11 @@
                     <h2>Admin panel</h2>
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" id="allUsersTable" href="#allUsers">Users table</a>
+                            <a class="nav-link active" data-toggle="tab" id="allUsersTable" href="#allUsers">Users
+                                table</a>
                         </li>
                         <li class="nav-item">
-                            <a  class="nav-link" data-toggle="tab" href="#newUser">New User</a>
+                            <a class="nav-link" data-toggle="tab" href="#newUser">New User</a>
                         </li>
                     </ul>
                     <div class="tab-content">
@@ -92,7 +95,8 @@
                                             <div class="form justify-content-center mx-auto col-5">
                                                 <form id="formNewUser" name="formNewUser">
                                                     <p>
-                                                        <label class="container-fluid" for="newUserName"><strong>Name</strong>
+                                                        <label class="container-fluid"
+                                                               for="newUserName"><strong>Name</strong>
                                                             <input class="form-control" type="text" name="userName"
                                                                    id="newUserName"/>
                                                         </label>
@@ -111,7 +115,8 @@
                                                         </label>
                                                     </p>
                                                     <p>
-                                                        <label class="container-fluid" for="newUserAge"><strong>City</strong>
+                                                        <label class="container-fluid"
+                                                               for="newUserAge"><strong>Age</strong>
                                                             <input class="form-control" type="text" name="age"
                                                                    id="newUserAge"/>
                                                         </label>
@@ -156,8 +161,6 @@
                                     <th>Age</th>
                                     <th>Password</th>
                                     <th>Role</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
                                 </tr>
                                 </thead>
                                 <tbody id="userPanelBody">
@@ -192,12 +195,12 @@
                             </p>
                             <p>
                                 <label for="userNameEditUser"><strong>Name</strong>
-                                    <input class="form-control" type="text" name="userName" id="userNameEditUser" />
+                                    <input class="form-control" type="text" name="userName" id="userNameEditUser"/>
                                 </label>
                             </p>
                             <p>
                                 <label for="lastNameEditUser"><strong>Lastname</strong>
-                                    <input class="form-control" type="text" name="lastName" id="lastNameEditUser" />
+                                    <input class="form-control" type="text" name="lastName" id="lastNameEditUser"/>
                                 </label>
                             </p>
                             <p>
@@ -207,12 +210,13 @@
                             </p>
                             <p>
                                 <label for="ageEditUser"><strong>City</strong>
-                                    <input class="form-control" type="text" name="age" id="ageEditUser" />
+                                    <input class="form-control" type="text" name="age" id="ageEditUser"/>
                                 </label>
                             </p>
                             <p>
                                 <label for="passwordEditUser"><strong>Password</strong>
-                                    <input class="form-control" type="password" name="password" id="passwordEditUser" required/>
+                                    <input class="form-control" type="password" name="password" id="passwordEditUser"
+                                           required/>
                                 </label>
                             </p>
 
@@ -224,7 +228,9 @@
                             <h1></h1>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" id="editFormCloseButton" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" id="editFormCloseButton" class="btn btn-secondary"
+                                    data-dismiss="modal">Close
+                            </button>
                             <button type="submit" class="btn btn-primary">Edit</button>
                         </div>
                     </div>
@@ -255,12 +261,14 @@
                             </p>
                             <p>
                                 <label for="userNameDeleteUser"><strong>Name</strong>
-                                    <input class="form-control" type="text" name="userName" id="userNameDeleteUser" disabled>
+                                    <input class="form-control" type="text" name="userName" id="userNameDeleteUser"
+                                           disabled>
                                 </label>
                             </p>
                             <p>
                                 <label for="lastNameDeleteUser"><strong>Lastname</strong>
-                                    <input class="form-control" type="text" name="lastName" id="lastNameDeleteUser" disabled>
+                                    <input class="form-control" type="text" name="lastName" id="lastNameDeleteUser"
+                                           disabled>
                                 </label>
                             </p>
                             <p>
@@ -275,17 +283,21 @@
                             </p>
                             <p>
                                 <label for="passwordDeleteUser"><strong>Password</strong>
-                                    <input class="form-control" type="password" name="password" id="passwordDeleteUser" disabled>
+                                    <input class="form-control" type="password" name="password" id="passwordDeleteUser"
+                                           disabled>
                                 </label>
                             </p>
                             <label class="container-fluid col-6" for="rolesDeleteUser"><strong>Role</strong>
-                                <select class="form-control" id="rolesDeleteUser" name="roles" multiple size="2" disabled>
+                                <select class="form-control" id="rolesDeleteUser" name="roles" multiple size="2"
+                                        disabled>
                                 </select>
                             </label>
                             <h1></h1>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" id="deleteFormCloseButton" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" id="deleteFormCloseButton" class="btn btn-secondary"
+                                    data-dismiss="modal">Close
+                            </button>
                             <button type="submit" class="btn btn-danger btn btn-primary">Delete</button>
                         </div>
                     </div>
